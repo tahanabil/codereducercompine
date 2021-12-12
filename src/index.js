@@ -1,8 +1,23 @@
+/** @format */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import { combineReducers, createStore } from 'redux';
+import clientReducer from './reducers/clientReducer';
+import userInfoReducer from './reducers/userinfo';
+
+const rootReducer = combineReducers({
+  client: clientReducer,
+  user: userInfoReducer,
+});
+
+const store = createStore(rootReducer);
+store.dispatch({ type: 'newClient' });
+console.log(store.getState());
 
 ReactDOM.render(
   <React.StrictMode>
