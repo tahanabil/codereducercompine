@@ -16,8 +16,17 @@ const rootReducer = combineReducers({
 });
 
 const store = createStore(rootReducer);
+
+//console.log(store.getState());
+
+const unSubscribe = store.subscribe(() => {
+  console.log(store.getState());
+});
 store.dispatch({ type: 'newClient' });
-console.log(store.getState());
+
+unSubscribe();
+
+store.dispatch({ type: 'newClient' });
 
 ReactDOM.render(
   <React.StrictMode>
